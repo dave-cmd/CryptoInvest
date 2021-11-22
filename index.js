@@ -13,19 +13,22 @@ var cons = require('consolidate');
 app.set('view engine', 'ejs')
 
 
+//Routes middleware
+//app.use(json());
+app.use(bodyParser.urlencoded({
+    extended:false
+}));
+
+
 //Routes
 const homeRoute = require("./routes/home");
 const registerRoute = require("./routes/register");
 const loginRoute = require("./routes/login");
 const contactRoute = require("./routes/contact");
 const aboutRoute = require("./routes/about");
-const { json, urlencoded } = require("express");
 
-//Routes middleware
-app.use(json());
-app.use(urlencoded({
-    extended:false
-}));
+
+
 
 
 app.listen(PORT, ()=>{

@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const { route } = require('./register');
 const router = Router();
 
 //Login page
@@ -9,7 +8,9 @@ app.get("/login", (req,res)=>{
 });
 
 app.post("/login", (req, res)=>{
-    res.render("/dashboard")
+    console.log(req.body)
+    res.send(req.body)
+    //res.render("/dashboard")
 });
 
 

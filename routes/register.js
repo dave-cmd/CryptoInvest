@@ -8,7 +8,8 @@ app.get("/register", (req,res)=>{
 });
 
 app.post("/register", (req, res)=>{
-    res.render("/login")
+    console.log(req.body);
+    res.render("./login")
 });
 
 
