@@ -1,6 +1,9 @@
 const express = require("express");
+const bodyParser = require('body-parser');
+
+
 app = express();
-let port = process.env.PORT || 3000;
+let PORT = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public'));
 
@@ -10,50 +13,21 @@ var cons = require('consolidate');
 app.set('view engine', 'ejs')
 
 
+//Routes
+const homeRoute = require("./routes/home");
+const registerRoute = require("./routes/register");
+const loginRoute = require("./routes/login");
+const contactRoute = require("./routes/contact");
+const aboutRoute = require("./routes/about");
+const { json, urlencoded } = require("express");
+
+//Routes middleware
+app.use(json());
+app.use(urlencoded({
+    extended:false
+}));
 
 
-//Render home page
-app.get("/", (req,res) =>{
-    res.render("index");
-})
-
-//Render about page
-app.get("/about", (req,res) =>{
-    res.render("about");
-})
-
-//Render contact page
-app.get("/contact", (req,res) =>{
-    res.render("contact");
-})
-
-
-//Render services page
-app.get("/services", (req,res) =>{
-    res.render("services");
-})
-
-//Registration Page
-
-app.get("/register", (req,res)=>{
-    res.render("register")
-});
-
-app.post("/register", (req, res)=>{
-    res.render("/login")
-});
-
-//Login page
-
-app.get("/login", (req,res)=>{
-    res.render("login")
-});
-
-app.post("/login", (req, res)=>{
-    res.render("/dashboard")
-});
-
-
-app.listen(port, ()=>{
-    console.log(`CryptoInvest is listening on port http://localhost:${port}`)
+app.listen(PORT, ()=>{
+    console.log(`CryptoInvest is listening on port http://localhost:${PORT}`)
 })
