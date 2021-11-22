@@ -33,6 +33,26 @@ app.get("/services", (req,res) =>{
     res.render("services");
 })
 
+//Registration Page
+
+app.get("/register", (req,res)=>{
+    res.render("register")
+});
+
+app.post("/register", (req, res)=>{
+    res.render("/login")
+});
+
+//Login page
+
+app.get("/login", (req,res)=>{
+    res.render("login")
+});
+
+app.post("/login", (req, res)=>{
+    res.render("/dashboard")
+});
+
 
 app.listen(port, ()=>{
     console.log(`CryptoInvest is listening on port http://localhost:${port}`)
